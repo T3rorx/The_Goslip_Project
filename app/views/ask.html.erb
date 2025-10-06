@@ -1,0 +1,14 @@
+<% if flash[:alert] %>
+  <p style="color: red;"><%= flash[:alert] %></p>
+<% end %>
+
+<%= form_with url: "/go", method: :post, local: true do %>
+  <div>
+    <label for="id">Ton ID</label>
+    <input type="text" name="id" id="id" />
+  </div>
+
+  <div style="margin-top: 8px;">
+    <button type="submit">Aller à ma page</button>
+  </div>
+<% end %>
