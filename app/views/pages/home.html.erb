@@ -6,7 +6,22 @@
     </div>
     <span class="badge badge--fire">New</span>
   </header>
-
+  <body>
+    <div class="card card--sub tier-1 halo-fire"  >
+      <% if @gossips.present? %>
+      <ul>
+        <% @gossips.each do |gossip| %>
+          <li>
+            <%= h(gossip.respond_to?(:author) ? gossip.author : gossip.user&.first_name) %> — 
+            <%= h(gossip.title) %>
+          </li>
+        <% end %>
+      </ul>
+      <% else %>
+        <p>Aucun potin pour le moment.</p>
+      <% end %>
+    </div>
+  </body>
   <article class="card neon-fire tier-2">
     <p class="mb-2">
       Explore les dernières rumeurs partagées par la communauté, et contacte-nous si tu veux participer à l’aventure.
