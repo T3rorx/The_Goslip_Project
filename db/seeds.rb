@@ -53,6 +53,8 @@ ActiveRecord::Base.transaction do
     u.city        = cities.sample
   end
 
+
+
   (N_USERS - users.size).times do
     users << User.create!(
       first_name:  Faker::Name.first_name,
