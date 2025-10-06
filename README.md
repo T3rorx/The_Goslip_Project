@@ -22,3 +22,17 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+  <% if @gossips.present? %>
+  <ul>
+    <% @gossips.each do |gossip| %>
+      <li>
+        <%= h(gossip.respond_to?(:author) ? gossip.author : gossip.user&.first_name) %> — 
+        <%= h(gossip.title) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Aucun potin pour le moment.</p>
+<% end %>
