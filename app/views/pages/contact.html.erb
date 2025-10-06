@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- Mets le bon chemin vers ton CSS -->
+  <link rel="stylesheet" href="/assets/gossip-theme.css">
+  <title>Gossip — Contact</title>
+  <style>
+    /* Optionnel : contrainte largeur pour cette page */
+    .maxw { max-width: 900px; margin-inline: auto; }
+  </style>
+</head>
+<body>
+  <!-- Navbar avec toggle thème -->
+  <nav class="navbar">
+    <div class="navbar__inner">
+      <div class="brand">
+        <div class="brand__logo"></div>
+        <h1 class="brand__name">The Gossip Project</h1>
+      </div>
+      <div class="nav__actions">
+        <button id="theme-toggle" class="btn btn--outline" type="button" aria-pressed="true" aria-label="Basculer le thème">
+          🌙 Mode nuit
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="wrap maxw">
+      <!-- En-tête -->
+      <header class="gossip-header">
+        <div>
+          <h2 class="gossip-title mt-0 mb-0">Contacter l’équipe Gossip</h2>
+          <p class="gossip-sub mt-1">Retrouve ci-dessous les informations pour joindre la team.</p>
+        </div>
+        <span class="badge badge--gold">Support</span>
+      </header>
+
+      <!-- Carte "Contact général" -->
+      <article class="card">
+        <h3 class="card__title">Contact général</h3>
+        <div class="grid grid--2">
+          <div class="card">
+            <div class="label">Nom &amp; prénom</div>
+            <div class="mt-1" style="font-weight:700;">Équipe Support Gossip</div>
+          </div>
+          <div class="card">
+            <div class="label">Email</div>
+            <div class="mt-1">
+              <a href="mailto:contact@gossip-site.fr">contact@gossip-site.fr</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="label">Téléphone</div>
+            <div class="mt-1">
+              <a href="tel:+33123456789">+33 1 23 45 67 89</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Liste des membres -->
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
+        <!-- Membre 1 -->
+        <article class="card gossip-card">
+          <h4 class="mb-1">Web design</h4>
+          <dl class="mb-0" style="display:grid;grid-template-columns:auto 1fr;row-gap:8px;column-gap:10px;">
+            <dt class="muted">Nom &amp; prénom</dt>
+            <dd class="mb-0"><%= User.first.first_name %> <%= User.first.last_name %></dd>
+
+            <dt class="muted">Email</dt>
+            <dd class="mb-0">
+              <a href="mailto:jean.dupont@gossip-site.fr">jean.dupont@gossip-site.fr</a>
+            </dd>
+
+            <dt class="muted">Âge</dt>
+            <dd class="mb-0"><%= User.first.age %></dd>
+          </dl>
+        </article>
+
+        <!-- Membre 2 -->
+        <article class="card gossip-card">
+          <h4 class="mb-1">Data Scientist</h4>
+          <dl class="mb-0" style="display:grid;grid-template-columns:auto 1fr;row-gap:8px;column-gap:10px;">
+            <dt class="muted">Nom &amp; prénom</dt>
+            <dd class="mb-0"><%= User.second.first_name %> <%= User.second.last_name %></dd>
+
+            <dt class="muted">Email</dt>
+            <dd class="mb-0">
+              <a href="mailto:sofia.martin@gossip-site.fr">sofia.martin@gossip-site.fr</a>
+            </dd>
+
+            <dt class="muted">Âge</dt>
+            <dd class="mb-0"><%= User.second.age %></dd>
+          </dl>
+        </article>
+
+        <!-- Membre 3 -->
+        <article class="card gossip-card">
+          <h4 class="mb-1">Support Presse</h4>
+          <dl class="mb-0" style="display:grid;grid-template-columns:auto 1fr;row-gap:8px;column-gap:10px;">
+            <dt class="muted">Nom &amp; prénom</dt>
+            <dd class="mb-0"><%= User.third.first_name %> <%= User.third.last_name %></dd>
+
+            <dt class="muted">Email</dt>
+            <dd class="mb-0">
+              <a href="mailto:presse@gossip-site.fr">presse@gossip-site.fr</a>
+            </dd>
+
+            <dt class="muted">Âge</dt>
+            <dd class="mb-0"><%= User.third.age %></dd>
+          </dl>
+        </article>
+      </div>
+
+      <!-- Footer -->
+      <footer class="gossip-footer">
+        <span>Besoin d’aide urgente ? Appelle en journée (9h–18h).</span>
+        <span class="muted">© Gossip</span>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    // Thème: persistance + toggle
+    const root = document.documentElement;
+    const key = "gossip-theme";
+    const btn = document.getElementById("theme-toggle");
+
+    // init: préférer valeur stockée sinon dark
+    const saved = localStorage.getItem(key);
+    const initial = saved === "light" || saved === "dark" ? saved : "dark";
+    root.setAttribute("data-theme", initial);
+    updateBtn(initial);
+
+    btn.addEventListener("click", () => {
+      const current = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", current);
+      localStorage.setItem(key, current);
+      updateBtn(current);
+    });
+
+    function updateBtn(mode){
+      const dark = mode === "dark";
+      btn.className = "btn " + (dark ? "btn--outline" : "btn--primary");
+      btn.setAttribute("aria-pressed", String(dark));
+      btn.textContent = dark ? "🌙 Mode nuit" : "☀️ Mode jour";
+    }
+  </script>
+</body>
+</html>
