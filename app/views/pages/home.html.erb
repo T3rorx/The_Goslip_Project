@@ -1,2 +1,19 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<section class="wrap">
+  <header class="gossip-header">
+    <div>
+      <h1 class="gossip-title mt-0">Bienvenue sur The Gossip Project</h1>
+      <p class="gossip-sub">Retrouve les scoops croustillants et notre équipe dédiée.</p>
+    </div>
+    <span class="badge badge--fire">New</span>
+  </header>
+
+  <article class="card neon-fire tier-2">
+    <p class="mb-2">
+      Explore les dernières rumeurs partagées par la communauté, et contacte-nous si tu veux participer à l’aventure.
+    </p>
+    <div class="gossip-card__actions">
+      <%= link_to "Voir l'équipe", pages_team_path, class: "btn btn--gold" %>
+      <%= link_to "Nous contacter", contact_path, class: "btn btn--outline" %>
+    </div>
+  </article>
+</section>
