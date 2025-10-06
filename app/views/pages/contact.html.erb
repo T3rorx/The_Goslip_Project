@@ -7,20 +7,20 @@
     <span class="badge badge--gold">Support</span>
   </header>
 
-  <article class="card tier-3 neon-fire card--stack">
-    <h2 class="card__title">Contact général</h2>
+  <article class="card tier-3 neon-fire card--stack ">
+    <h2 class="card__title ">Contact général</h2>
     <div class="grid grid--2">
-      <div class="card card--sub tier-1">
-        <div class="label">Nom &amp; prénom</div>
+      <div class="card card--sub tier-1 halo-fire">
+        <div class="label">TGP &amp; Team</div>
         <div class="mt-1" style="font-weight:700;">Équipe Support Gossip</div>
       </div>
-      <div class="card card--sub tier-2 halo-fire">
+      <div class="card card--sub tier-1 halo-fire">
         <div class="label">Email</div>
         <div class="mt-1">
           <a href="mailto:contact@gossip-site.fr">contact@gossip-site.fr</a>
         </div>
       </div>
-      <div class="card card--sub tier-1">
+      <div class="card card--sub tier-1 halo-fire">
         <div class="label">Téléphone</div>
         <div class="mt-1">
           <a href="tel:+33123456789">+33 1 23 45 67 89</a>
@@ -30,42 +30,42 @@
   </article>
 
   <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
-    <article class="card gossip-card tier-2 halo-fire">
+    <article class="card gossip-card tier-2 neon-fire profile-card">
       <h3 class="mb-1">Web design</h3>
-      <dl class="mb-0" style="display:grid;grid-template-columns:auto 1fr;row-gap:8px;column-gap:10px;">
+      <dl class="mb-0 details-list">
         <dt class="muted">Nom &amp; prénom</dt>
         <dd class="mb-0"><%= User.first.first_name %> <%= User.first.last_name %></dd>
         <dt class="muted">Email</dt>
         <dd class="mb-0">
-          <a href="mailto:jean.dupont@gossip-site.fr">jean.dupont@gossip-site.fr</a>
+          <a href="mailto:<%= User.first.email %>"><%= User.first.email %></a>
         </dd>
         <dt class="muted">Âge</dt>
         <dd class="mb-0"><%= User.first.age %></dd>
       </dl>
     </article>
 
-    <article class="card gossip-card tier-3 neon-fire">
+    <article class="card gossip-card tier-2 neon-fire profile-card">
       <h3 class="mb-1">Data Scientist</h3>
-      <dl class="mb-0" style="display:grid;grid-template-columns:auto 1fr;row-gap:8px;column-gap:10px;">
+      <dl class="mb-0 details-list">
         <dt class="muted">Nom &amp; prénom</dt>
         <dd class="mb-0"><%= User.second.first_name %> <%= User.second.last_name %></dd>
         <dt class="muted">Email</dt>
         <dd class="mb-0">
-          <a href="mailto:sofia.martin@gossip-site.fr">sofia.martin@gossip-site.fr</a>
+          <a href="mailto:<%= User.second.email %>"><%= User.second.email %></a>
         </dd>
         <dt class="muted">Âge</dt>
         <dd class="mb-0"><%= User.second.age %></dd>
       </dl>
     </article>
 
-    <article class="card gossip-card tier-1">
+    <article class="card gossip-card tier-2 neon-fire profile-card">
       <h3 class="mb-1">Support Presse</h3>
-      <dl class="mb-0" style="display:grid;grid-template-columns:auto 1fr;row-gap:8px;column-gap:10px;">
+      <dl class="mb-0 details-list">
         <dt class="muted">Nom &amp; prénom</dt>
         <dd class="mb-0"><%= User.third.first_name %> <%= User.third.last_name %></dd>
         <dt class="muted">Email</dt>
         <dd class="mb-0">
-          <a href="mailto:presse@gossip-site.fr">presse@gossip-site.fr</a>
+          <a href="mailto:<%= User.third.email %>"><%= User.third.email %></a>
         </dd>
         <dt class="muted">Âge</dt>
         <dd class="mb-0"><%= User.third.age %></dd>

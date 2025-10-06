@@ -69,7 +69,6 @@ body{
   -moz-osx-font-smoothing:grayscale;
 }
 a{color:var(--zc-fire);text-decoration:none}
-a:hover{text-decoration:underline}
 
 /* ====== LAYOUT ====== */
 .container{
@@ -172,7 +171,8 @@ html[data-theme="dark"] .navbar{background:rgba(15,16,19,.35)}
 }
 .card.neon-fire::after{
   content:"";
-  position:absolute;inset:-2px;
+  position:absolute;
+  inset:-2px;
   border-radius:inherit;
   border:2px solid rgba(255,122,0,.25);
   pointer-events:none;
@@ -199,10 +199,33 @@ html[data-theme="dark"] .navbar{background:rgba(15,16,19,.35)}
 }
 .card .card--sub + .card--sub{margin-top:12px}
 .card--stack{display:grid;gap:12px}
+.card.profile-card{
+  min-height:240px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.card.profile-card dl{
+  margin-top:auto;
+}
+.details-list{
+  display:grid;
+  grid-template-columns:minmax(90px,max-content) 1fr;
+  row-gap:8px;
+  column-gap:6px;
+}
 .gossip-card__meta{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:12px}
 .gossip-card__actions{display:flex;gap:8px;align-items:center}
 .gossip-form{display:grid;gap:12px}
 .gossip-footer{margin-top:24px;padding-top:12px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:12px}
+
+.card .card--sub.halo-fire {
+  border-color: rgba(255,122,0,.25);
+  box-shadow: 0 10px 20px rgba(255,122,0,.16);
+}
+.card .card--sub.halo-fire:hover {
+  box-shadow: 0 14px 28px rgba(255,122,0,.2);
+}
 
 /* ====== UTILITIES ====== */
 .mt-0{margin-top:0}.mb-0{margin-bottom:0}.mt-1{margin-top:8px}.mb-1{margin-bottom:8px}.mt-2{margin-top:12px}.mb-2{margin-bottom:12px}.mt-3{margin-top:16px}.mb-3{margin-bottom:16px}
