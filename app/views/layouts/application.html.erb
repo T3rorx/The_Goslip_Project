@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="light">
   <head>
     <title><%= content_for(:title) || "The Goslip Project" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -23,6 +23,51 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar">
+      <div class="navbar__inner">
+        <div class="brand">
+          <div class="brand__logo"></div>
+          <p class="brand__name">The Gossip Project</p>
+        </div>
+        <div class="nav__actions">
+          <button id="theme-toggle" class="btn btn--outline" type="button" aria-pressed="false" aria-label="Basculer le thème">
+            ☀️ Mode jour
+          </button>
+          <%= link_to "Accueil", root_path, class: "btn btn--primary" %>
+          <%= link_to "Team", pages_team_path, class: "btn" %>
+          <%= link_to "Contact", contact_path, class: "btn btn--outline" %>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container">
+      <%= yield %>
+    </main>
+    <script>
+      (() => {
+        const root = document.documentElement;
+        const storageKey = "gossip-theme";
+        const toggle = document.getElementById("theme-toggle");
+        if (!toggle) return;
+
+        const saved = localStorage.getItem(storageKey);
+        const initial = saved === "dark" || saved === "light" ? saved : root.getAttribute("data-theme") || "light";
+        applyTheme(initial);
+
+        toggle.addEventListener("click", () => {
+          const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          applyTheme(next);
+          localStorage.setItem(storageKey, next);
+        });
+
+        function applyTheme(mode) {
+          const dark = mode === "dark";
+          root.setAttribute("data-theme", mode);
+          toggle.className = "btn " + (dark ? "btn--outline" : "btn--primary");
+          toggle.setAttribute("aria-pressed", String(dark));
+          toggle.textContent = dark ? "🌙 Mode nuit" : "☀️ Mode jour";
+        }
+      })();
+    </script>
   </body>
 </html>

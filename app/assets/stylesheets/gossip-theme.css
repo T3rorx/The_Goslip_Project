@@ -1,0 +1,238 @@
+
+/* =========================================================
+   The Gossip Project — Theme CSS (extrait du thème "Ze Chocolatine Crew")
+   Fichier: gossip-theme.css
+   Licence: usage pédagogique
+   ========================================================= */
+
+/* ====== TOKENS ====== */
+:root{
+  /* Palette */
+  --zc-choco:#5A2E1A;     /* Primaire chocolat */
+  --zc-fire:#FF7A00;      /* Secondaire feu */
+  --zc-gold:#FFC82C;      /* Accent doré */
+  --zc-text-dark:#0E0E0F;
+  --zc-text-light:#FFFFFF;
+  --zc-gray-100:#F0F2F6;
+  --zc-gray-200:#E6E8EE;
+  --zc-gray-700:#2A2C31;
+
+  /* Typo */
+  --font-title:"Knewave","Bebas Neue",system-ui,sans-serif;
+  --font-sub:"Lacquer",system-ui,sans-serif;
+  --font-body:"Banaue","Kalam",system-ui,sans-serif;
+
+  /* Rounds & shadows */
+  --radius:16px;
+  --shadow:0 10px 30px #00000018;
+
+  /* Layout */
+  --container-w:1100px;
+}
+
+/* Thèmes */
+html[data-theme="light"]{
+  --bg:#F6F6F9;
+  --panel:#ffffff;
+  --layer-1:#ffffff;
+  --layer-2:#FBF3ED;
+  --layer-3:#F4E7DC;
+  --text:var(--zc-text-dark);
+  --muted:#586176;
+  --border:var(--zc-gray-200);
+  --ring:#FF7A0040;
+  --btn-text:#ffffff;
+}
+html[data-theme="dark"]{
+  --bg:#121216;
+  --panel:#121624;
+  --layer-1:#1C1F2C;
+  --layer-2:#23283A;
+  --layer-3:#2B3146;
+  --text:#ECEFF4;
+  --muted:#B9BFCA;
+  --border:#24262C;
+  --ring:#FFC82C33;
+  --btn-text:#111111;
+}
+
+/* ====== BASE ====== */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+a{color:var(--zc-fire);text-decoration:none}
+
+/* ====== LAYOUT ====== */
+.container{
+  max-width:var(--container-w);
+  margin-inline:auto;
+  padding:24px 20px;
+}
+.wrap{display:grid;gap:18px}
+
+/* ====== NAVBAR ====== */
+.navbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.35);
+  backdrop-filter:saturate(180%) blur(12px);
+  border-bottom:1px solid var(--border);
+}
+html[data-theme="dark"] .navbar{background:rgba(15,16,19,.35)}
+.navbar__inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:12px 20px;max-width:var(--container-w);margin:auto;
+}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-title);letter-spacing:.5px}
+.brand__logo{width:34px;height:34px;border-radius:8px;background:var(--zc-fire);box-shadow:0 6px 20px var(--ring)}
+.brand__name{font-size:22px;margin:0}
+.nav__actions{display:flex;gap:10px;align-items:center}
+
+/* ====== BUTTONS ====== */
+.btn{
+  appearance:none;cursor:pointer;
+  border:1px solid var(--border);
+  padding:10px 14px;border-radius:12px;
+  background:var(--panel);color:var(--text);
+  font-weight:700;box-shadow:0 0 0 0 var(--ring);transition:.15s;
+}
+.btn:focus{outline:none;box-shadow:0 0 0 6px var(--ring)}
+.btn--primary{background:var(--zc-fire);color:var(--btn-text);border-color:transparent}
+.btn--outline{background:transparent;color:var(--zc-fire);border-color:var(--zc-fire)}
+.btn--gold{background:var(--zc-gold);color:#111;border-color:transparent}
+
+/* ====== BADGES ====== */
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;font-weight:700;border-radius:999px;border:1px solid var(--border);font-size:12px}
+.badge--gold{background:var(--zc-gold);color:#111;border-color:transparent}
+.badge--fire{background:var(--zc-fire);color:#fff;border-color:transparent}
+
+/* ====== CARDS ====== */
+.card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  padding:16px;
+}
+.card + .card{margin-top:12px}
+.card__title{font-family:var(--font-title);font-size:28px;margin:0 0 6px 0}
+.card__subtitle{font-family:var(--font-sub);font-size:16px;margin:0 0 10px 0;color:var(--muted)}
+
+/* ====== GRID ====== */
+.grid{display:grid;gap:14px}
+.grid--2{grid-template-columns:repeat(2,1fr)}
+.grid--3{grid-template-columns:repeat(3,1fr)}
+@media (max-width:900px){.grid--2,.grid--3{grid-template-columns:1fr}}
+
+/* ====== FORMS ====== */
+.form{display:grid;gap:12px}
+.label{font-weight:700;font-size:14px}
+.input,.textarea,select{
+  width:100%;padding:10px 12px;border-radius:12px;
+  border:1px solid var(--border);background:var(--panel);color:var(--text);
+}
+.textarea{min-height:120px;resize:vertical}
+.input:focus,.textarea:focus,select:focus{outline:none;box-shadow:0 0 0 6px var(--ring);border-color:var(--zc-fire)}
+
+/* ====== TABLE ====== */
+.table{width:100%;border-collapse:separate;border-spacing:0 8px}
+.table th{text-align:left;font-size:12px;color:var(--muted);font-weight:700;padding:6px 10px}
+.table td{background:var(--panel);border:1px solid var(--border);padding:12px;border-left:none;border-right:none}
+.table tr{border-radius:12px}
+.table tr td:first-child{border-top-left-radius:12px;border-bottom-left-radius:12px;border-left:1px solid var(--border)}
+.table tr td:last-child{border-top-right-radius:12px;border-bottom-right-radius:12px;border-right:1px solid var(--border)}
+
+/* ====== FLASH MESSAGES ====== */
+.flash{padding:12px 14px;border:1px solid var(--border);border-radius:12px;margin:10px 0;font-weight:700}
+.flash--success{background:#1bc57a20;color:#1bc57a;border-color:#1bc57a40}
+.flash--error{background:#ff4d4f20;color:#ff4d4f;border-color:#ff4d4f40}
+.flash--info{background:#2e86ff20;color:#2e86ff;border-color:#2e86ff40}
+
+/* ====== GOSSIP APP SPECIFIQUE ====== */
+.gossip-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.gossip-title{font-family:var(--font-title);font-size:32px;margin:0}
+.gossip-sub{font-family:var(--font-sub);color:var(--muted);margin:0}
+.gossip-list{display:grid;gap:12px}
+.gossip-card{display:grid;gap:8px;padding:14px;border:1px solid var(--border);border-radius:14px;background:var(--panel);box-shadow:var(--shadow)}
+.card{position:relative}
+.card.tier-1{background:var(--layer-1)}
+.card.tier-2{background:var(--layer-2)}
+.card.tier-3{background:var(--layer-3)}
+.card.neon-fire{
+  border-color:rgba(255,122,0,.55);
+  box-shadow:0 12px 26px rgba(255,122,0,.2);
+}
+.card.neon-fire::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:inherit;
+  border:2px solid rgba(255,122,0,.25);
+  pointer-events:none;
+  filter:blur(0.5px);
+}
+.card.neon-fire:hover{
+  box-shadow:0 18px 36px rgba(255,122,0,.24);
+}
+.card.halo-fire{
+  border-color:rgba(255,122,0,.25);
+  box-shadow:0 10px 20px rgba(255,122,0,.16);
+}
+.card.halo-fire:hover{
+  box-shadow:0 14px 28px rgba(255,122,0,.2);
+}
+.card .card,
+.card .card--sub{
+  background:var(--layer-1);
+  border:1px solid rgba(255,255,255,.06);
+  box-shadow:none;
+  margin:0;
+}
+.card .card--sub + .card--sub{margin-top:12px}
+.card--stack{display:grid;gap:12px}
+.card.profile-card{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:12px;
+}
+.card.profile-card > *:last-child{margin-top:auto}
+.details-list{
+  display:grid;
+  grid-template-columns:minmax(90px,max-content) 1fr;
+  row-gap:8px;
+  column-gap:4px;
+}
+.grid--auto-tiles{
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  grid-auto-rows:1fr;
+}
+.gossip-card__meta{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:12px}
+.gossip-card__actions{display:flex;gap:8px;align-items:center}
+.gossip-form{display:grid;gap:12px}
+.gossip-footer{margin-top:24px;padding-top:12px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:12px}
+
+.card .card--sub.halo-fire {
+  border-color: rgba(255,122,0,.25);
+  box-shadow: 0 10px 20px rgba(255,122,0,.16);
+}
+.card .card--sub.halo-fire:hover {
+  box-shadow: 0 14px 28px rgba(255,122,0,.2);
+}
+
+/* ====== UTILITIES ====== */
+.mt-0{margin-top:0}.mb-0{margin-bottom:0}.mt-1{margin-top:8px}.mb-1{margin-bottom:8px}.mt-2{margin-top:12px}.mb-2{margin-bottom:12px}.mt-3{margin-top:16px}.mb-3{margin-bottom:16px}
+.p-0{padding:0}.p-1{padding:8px}.p-2{padding:12px}.p-3{padding:16px}
+.text-center{text-align:center}.muted{color:var(--muted)}
+.hidden{display:none}
+
+/* ====== THEME TOGGLE HELPER (optionnel) ====== */
+/* Utilise: <html data-theme="dark|light"> — gérer en JS dans application.js */
