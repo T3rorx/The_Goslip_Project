@@ -1,0 +1,8 @@
+<h1> Voici le potin numero <%= params[:id] %> </h1>
+
+<% my_gossip= Gossip.find(params[:id]) %>
+
+<p> Auteur: <%= my_gossip.user.first_name %> </p>
+<p> Titre: <%= my_gossip.title %> </p>
+<p> ce qu'il nous apprend de croustillant comme un croissant: </p>
+<p> <%= my_gossip.content %> </p>
