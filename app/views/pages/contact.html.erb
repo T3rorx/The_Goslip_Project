@@ -1,82 +1,65 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<section class="wrap" style="max-width:900px;margin-inline:auto;">
-  <header class="gossip-header">
+<section class="gp-card gp-fade-1" style="max-width: 960px; margin-inline: auto;">
+  <div class="gp-card__header gp-mb-2">
     <div>
-      <h1 class="gossip-title mt-0 mb-0">Contacter l’équipe Gossip</h1>
-      <p class="gossip-sub mt-1">Retrouve ci-dessous les informations pour joindre la team.</p>
+      <h1 class="gp-card-title gp-mb-0">Contacter l’équipe Gossip</h1>
+      <p class="gp-card-subtitle gp-mb-0">Retrouve ci-dessous toutes les infos pour nous joindre.</p>
     </div>
-    <span class="badge badge--gold">Support</span>
-  </header>
-
-  <article class="card tier-3 neon-fire card--stack ">
-    <h2 class="card__title ">Contact général</h2>
-    <div class="grid grid--2">
-      <div class="card card--sub tier-1 halo-fire">
-        <div class="label">TGP &amp; Team</div>
-        <div class="mt-1" style="font-weight:700;">Équipe Support Gossip</div>
-      </div>
-      <div class="card card--sub tier-1 halo-fire">
-        <div class="label">Email</div>
-        <div class="mt-1">
-          <a href="mailto:contact@gossip-site.fr">contact@gossip-site.fr</a>
-        </div>
-      </div>
-      <div class="card card--sub tier-1 halo-fire">
-        <div class="label">Téléphone</div>
-        <div class="mt-1">
-          <a href="tel:+33123456789">+33 1 23 45 67 89</a>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <div class="grid grid--auto-tiles">
-    <article class="card gossip-card tier-2 neon-fire profile-card">
-      <h3 class="mb-1">Web design</h3>
-      <dl class="mb-0 details-list">
-        <dt class="muted">Nom &amp; prénom</dt>
-        <dd class="mb-0"><%= User.first.first_name %> <%= User.first.last_name %></dd>
-        <dt class="muted">Email</dt>
-        <dd class="mb-0">
-          <a href="mailto:<%= User.first.email %>"><%= User.first.email %></a>
-        </dd>
-        <dt class="muted">Âge</dt>
-        <dd class="mb-0"><%= User.first.age %></dd>
-      </dl>
-    </article>
-
-    <article class="card gossip-card tier-2 neon-fire profile-card">
-      <h3 class="mb-1">Data Scientist</h3>
-      <dl class="mb-0 details-list">
-        <dt class="muted">Nom &amp; prénom</dt>
-        <dd class="mb-0"><%= User.second.first_name %> <%= User.second.last_name %></dd>
-        <dt class="muted">Email</dt>
-        <dd class="mb-0">
-          <a href="mailto:<%= User.second.email %>"><%= User.second.email %></a>
-        </dd>
-        <dt class="muted">Âge</dt>
-        <dd class="mb-0"><%= User.second.age %></dd>
-      </dl>
-    </article>
-
-    <article class="card gossip-card tier-2 neon-fire profile-card">
-      <h3 class="mb-1">Support Presse</h3>
-      <dl class="mb-0 details-list">
-        <dt class="muted">Nom &amp; prénom</dt>
-        <dd class="mb-0"><%= User.third.first_name %> <%= User.third.last_name %></dd>
-        <dt class="muted">Email</dt>
-        <dd class="mb-0">
-          <a href="mailto:<%= User.third.email %>"><%= User.third.email %></a>
-        </dd>
-        <dt class="muted">Âge</dt>
-        <dd class="mb-0"><%= User.third.age %></dd>
-      </dl>
-    </article>
+    <span class="gp-badge gp-badge--warning">Support</span>
   </div>
 
-  <footer class="gossip-footer">
-    <span>Besoin d’aide urgente ? Appelle en journée (9h–18h).</span>
-    <span class="muted">© Gossip</span>
+  <div class="gp-grid gp-grid-2 gp-mb-3">
+    <div class="gp-list-item">
+      <span class="gp-text-muted gp-mb-1">TGP &amp; Team</span>
+      <strong>Équipe Support Gossip</strong>
+    </div>
+    <div class="gp-list-item">
+      <span class="gp-text-muted gp-mb-1">Email</span>
+      <a href="mailto:contact@gossip-site.fr" class="gp-text-accent">contact@gossip-site.fr</a>
+    </div>
+    <div class="gp-list-item">
+      <span class="gp-text-muted gp-mb-1">Téléphone</span>
+      <a href="tel:+33123456789" class="gp-text-accent">+33 1 23 45 67 89</a>
+    </div>
+  </div>
+
+  <% contacts = [
+       { title: "Web design", user: User.first },
+       { title: "Data Scientist", user: User.second },
+       { title: "Support Presse", user: User.third }
+     ] %>
+
+  <div class="gp-grid gp-grid-3">
+    <% contacts.each_with_index do |entry, index| %>
+      <% user = entry[:user] %>
+      <% next unless user %>
+      <article class="gp-card gp-neon-section gp-fade-<%= [index + 2, 4].min %>">
+        <div class="gp-card-body">
+          <div class="gp-contact-panel">
+            <h3 class="gp-card-title gp-mb-1"><%= entry[:title] %></h3>
+            <dl class="gp-stack gp-mb-0">
+              <div>
+                <dt class="gp-text-muted gp-mb-1">Nom &amp; prénom</dt>
+                <dd class="gp-mb-0"><%= "#{user.first_name} #{user.last_name}" %></dd>
+              </div>
+              <div>
+              <dt class="gp-text-muted gp-mb-1">Email</dt>
+              <dd class="gp-mb-0">
+                <a href="mailto:<%= user.email %>" class="gp-text-accent"><%= user.email %></a>
+              </dd>
+            </div>
+              <div>
+                <dt class="gp-text-muted gp-mb-1">Âge</dt>
+                <dd class="gp-mb-0"><%= user.age %> ans</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </article>
+    <% end %>
+  </div>
+
+  <footer class="gp-flex gp-flex-between" style="margin-top: 28px;">
+    <span class="gp-text-muted">Besoin d’aide urgente ? Appelle en journée (9h – 18h).</span>
+    <span class="gp-text-muted">© Gossip</span>
   </footer>
 </section>
