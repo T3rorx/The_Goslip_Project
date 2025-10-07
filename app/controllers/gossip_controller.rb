@@ -4,4 +4,11 @@ class GossipController < ApplicationController
     puts "Gossip URL: /gossip/#{params[:id]}"
     puts "$" * 27
   end
+  def new
+    …
+  end
+
+  def create
+    …
+  end
 end
