@@ -7,7 +7,7 @@
       <p class="gossip-sub">Retrouve les scoops croustillants et notre équipe dédiée.</p>
     </div>
     <span class="badge badge--fire">New</span>
-    <a href="/gossip_new>">Nouveau Gossip</a>
+    <%= link_to "Nouveau Gossip", new_gossip_path %>
   </header>
   <body>
     <div class="card card--sub tier-1 halo-fire"  >
@@ -15,8 +15,8 @@
       <ul>
         <% @gossips.each do |gossip| %>
           <li>
-            <a href="/user_profile/<%=gossip.user&.id%>"><%= gossip.user&.first_name%></a> — 
-            <a href="/gossip/<%=gossip.id%>"><%= gossip.title %></a>
+            <a href="/user_profile/<%= gossip.user&.id %>"><%= gossip.user&.first_name %></a> — 
+            <%= link_to gossip.title, gossip_path(gossip) %>
           </li>
         <% end %>
       </ul>
