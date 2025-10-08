@@ -22,42 +22,6 @@
     </div>
   </div>
 
-  <% contacts = [
-       { title: "Web design", user: User.first },
-       { title: "Data Scientist", user: User.second },
-       { title: "Support Presse", user: User.third }
-     ] %>
-
-  <div class="gp-grid gp-grid-3">
-    <% contacts.each_with_index do |entry, index| %>
-      <% user = entry[:user] %>
-      <% next unless user %>
-      <article class="gp-card gp-neon-section gp-fade-<%= [index + 2, 4].min %>">
-        <div class="gp-card-body">
-          <div class="gp-contact-panel">
-            <h3 class="gp-card-title gp-mb-1"><%= entry[:title] %></h3>
-            <dl class="gp-stack gp-mb-0">
-              <div>
-                <dt class="gp-text-muted gp-mb-1">Nom &amp; prénom</dt>
-                <dd class="gp-mb-0"><%= "#{user.first_name} #{user.last_name}" %></dd>
-              </div>
-              <div>
-              <dt class="gp-text-muted gp-mb-1">Email</dt>
-              <dd class="gp-mb-0">
-                <a href="mailto:<%= user.email %>" class="gp-text-accent"><%= user.email %></a>
-              </dd>
-            </div>
-              <div>
-                <dt class="gp-text-muted gp-mb-1">Âge</dt>
-                <dd class="gp-mb-0"><%= user.age %> ans</dd>
-              </div>
-            </dl>
-          </div>
-        </div>
-      </article>
-    <% end %>
-  </div>
-
   <footer class="gp-flex gp-flex-between" style="margin-top: 28px;">
     <span class="gp-text-muted">Besoin d’aide urgente ? Appelle en journée (9h – 18h).</span>
     <span class="gp-text-muted">© Gossip</span>
