@@ -24,7 +24,9 @@
     </div>
     <div>
       <dt class="gp-text-muted gp-mb-1">Ville</dt>
-      <dd class="gp-mb-0"><%= @user.city&.name || "Non renseignée" %></dd>
+      <a href="<%= city_path@user.city.id %>" class="gp-text-accent"><%= @user.city.name %></a>
+      <p> <%= city_path@user.city.id %> </p>
+      
     </div>
     <div>
       <dt class="gp-text-muted gp-mb-1">Description</dt>

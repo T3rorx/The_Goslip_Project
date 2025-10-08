@@ -18,6 +18,8 @@
     <div><%= simple_format(@gossip.content) %></div>
   </div>
 
+<p> écrit un commentaire sous ce potin : <a href ="<%= comment_path@gossip.id %>" > viens ici  </p>
+
   <div class="gp-flex gp-gap-md gp-mt-3">
     <%= link_to "Revenir aux potins", root_path, class: "gp-btn gp-btn--ghost" %>
     <%= link_to "Publier un gossip", new_gossip_path, class: "gp-btn gp-btn--primary" %>
