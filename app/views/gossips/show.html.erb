@@ -4,7 +4,7 @@
       <h1 class="gp-card-title gp-mb-0"><%= @gossip.title %></h1>
       <p class="gp-card-subtitle gp-mb-0">
         <% if @gossip.user.present? %>
-          Partagé par <%= link_to @gossip.user.first_name, user_profile_path(@gossip.user), class: "gp-text-accent" %>
+          Partagé par <%= link_to @gossip.user.first_name, user_path(@gossip.user), class: "gp-text-accent" %>
         <% else %>
           Partagé par <span class="gp-text-muted">Anonyme</span>
         <% end %>

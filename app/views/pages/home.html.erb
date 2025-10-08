@@ -27,7 +27,7 @@
           <div class="gp-meta">
             <% if gossip.user.present? %>
               <span class="gp-text-accent">
-                <%= link_to gossip.user.first_name, user_profile_path(gossip.user) %>
+                <%= link_to gossip.user.first_name, user_path(gossip.user) %>
               </span>
             <% else %>
               <span class="gp-text-muted">Anonyme</span>

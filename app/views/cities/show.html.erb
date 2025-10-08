@@ -1,8 +1,21 @@
-<h1> <%= @city.name %> </h1>
+<section class="gp-card gp-fade-2">
+  <div class="gp-card__header gp-mb-2">
+    <h2 class="gp-card-title gp-mb-0">Les derniers potins de <%= @city.name %></h2>
+    <span class="gp-badge gp-badge--warning">Ville</span>
+  </div>
+    <% if @city.users.any? %>
+        <ul class="gp-list">
+        <% @city.users.each do |u| %>
+            <a href="<%= user_path(u)%>" class="gp-text-accent"><%= u.first_name %> <%= u.last_name %> (<%= u.age %> ans)</a>
+        <% end %>
+        </ul>
+    <% else %>
+        <p>Pas d'utilisateur dans cette ville</p>
+    <% end %>
 
-<p> <%= @city.id %> </p>
 
-<% @gossips.each do |gossip| %>
-<% @cities.each do |city| %> 
-<% @cities.user.first_name %>
-<% end %>
+  <div class="gp-flex gp-gap-md gp-mt-3">
+    <%= link_to "Revenir aux potins", root_path, class: "gp-btn gp-btn--ghost" %>
+    <%= link_to "Publier un gossip", new_gossip_path, class: "gp-btn gp-btn--primary" %>
+  </div>
+</section>
