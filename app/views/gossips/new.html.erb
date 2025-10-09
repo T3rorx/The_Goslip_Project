@@ -1,0 +1,39 @@
+<section class="gp-card gp-fade-1" style="max-width: 720px; margin-inline: auto;">
+  <div class="gp-card__header gp-mb-2">
+    <div>
+      <h1 class="gp-card-title gp-mb-0">Publier un nouveau gossip</h1>
+      <p class="gp-card-subtitle gp-mb-0">Un titre accrocheur, un contenu croustillant… la scène est à toi.</p>
+    </div>
+    <span class="gp-badge">Nouveau</span>
+  </div>
+
+  <% if @gossip&.errors&.any? %>
+    <div class="gp-list-item gp-mb-3" style="border-color: rgba(255, 107, 107, 0.4);">
+      <p class="gp-text-error gp-mb-1">Impossible de publier ce gossip :</p>
+      <ul class="gp-text-muted gp-mb-0" style="padding-left: 18px;">
+        <% @gossip.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <form action="<%= gossips_path %>" method="post" class="gp-form">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+    <div>
+      <label class="gp-label" for="gossip_title">Titre du gossip</label>
+      <input class="gp-input" type="text" id="gossip_title" name="gossip[title]" value="<%= @gossip&.title %>">
+    </div>
+
+    <div>
+      <label class="gp-label" for="gossip_content">Contenu</label>
+      <textarea class="gp-textarea" id="gossip_content" name="gossip[content]"><%= @gossip&.content %></textarea>
+    </div>
+
+    <div class="gp-flex gp-gap-md">
+      <button type="submit" class="gp-btn gp-btn--primary">Publier le gossip</button>
+      <%= link_to "Retour", root_path, class: "gp-btn gp-btn--ghost" %>
+    </div>
+  </form>
+</section>

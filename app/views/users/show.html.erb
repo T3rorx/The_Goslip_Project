@@ -1,0 +1,43 @@
+<section class="gp-card gp-fade-1" style="max-width: 720px; margin-inline: auto;">
+  <header class="gp-card__header gp-mb-2">
+    <div>
+      <h1 class="gp-card-title gp-mb-0">Le profil croustillant de <%= @user.first_name %></h1>
+      <p class="gp-card-subtitle gp-mb-0">Toutes les infos sur l’un de nos agents du ragot.</p>
+    </div>
+    <span class="gp-badge">Profil</span>
+  </header>
+
+  <dl class="gp-stack gp-mb-0">
+    <div>
+      <dt class="gp-text-muted gp-mb-1">Nom &amp; prénom</dt>
+      <dd class="gp-mb-0"><%= "#{@user.first_name} #{@user.last_name}" %></dd>
+    </div>
+    <div>
+      <dt class="gp-text-muted gp-mb-1">Email</dt>
+      <dd class="gp-mb-0">
+        <a href="mailto:<%= @user.email %>" class="gp-text-accent"><%= @user.email %></a>
+      </dd>
+    </div>
+    <div>
+      <dt class="gp-text-muted gp-mb-1">Âge</dt>
+      <dd class="gp-mb-0"><%= @user.age %> ans</dd>
+    </div>
+    <div>
+      <dt class="gp-text-muted gp-mb-1">Ville</dt>
+      <% if @user.city.present? %>
+        <dd class="gp-mb-0"><%= link_to @user.city.name, city_path(@user.city), class: "gp-text-accent" %></dd>
+      <% else %>
+        <dd class="gp-mb-0">Aucune ville renseignée</dd>
+      <% end %>
+    </div>
+    <div>
+      <dt class="gp-text-muted gp-mb-1">Description</dt>
+      <dd class="gp-mb-0"><%= @user.description.presence || "Encore un peu de mystère…" %></dd>
+    </div>
+  </dl>
+
+  <div class="gp-flex gp-gap-md gp-mt-3">
+    <%= link_to "Retour aux potins", root_path, class: "gp-btn gp-btn--ghost" %>
+    <%= link_to "Contacter", "mailto:#{@user.email}", class: "gp-btn gp-btn--primary" %>
+  </div>
+</section>

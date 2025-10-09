@@ -1,0 +1,36 @@
+<section class="gp-card gp-fade-1">
+  <div class="gp-card__header">
+    <div>
+      <h1 class="gp-card-title gp-mb-0"> Commentaire </h1>
+    </div>
+    <span class="gp-badge">Gossip #</span>
+  </div>
+
+  <div class="gp-card-body">
+    <p class="gp-text-muted"> Ce qu’il nous apprend de croustillant :</p>
+    <p> <%= @comment.content %> </p>
+  </div>
+
+user_id (user qui a posté le commentaire) via table user
+<p> <%= @comment.user.first_name %> </p>
+<p> <%= @comment.user.last_name %> </p>
+<p> <%= @comment.user.city.name %> </p>
+
+gossip_id (le gossip concerné) via table gossip
+<p> <%= @comment.gossip.title %> </p>
+
+(parent_comment_id)
+
+created_at (date de creation)
+<p> <%= @comment.created_at %> </p>
+updated_at (date de modification)
+<p> <%= @comment.updated_at %> </p>
+
+
+  <div class="gp-flex gp-gap-md gp-mt-3">
+    <%= link_to "Revenir aux potins", root_path, class: "gp-btn gp-btn--ghost" %>
+    <%= link_to "Publier un gossip", new_gossip_path, class: "gp-btn gp-btn--primary" %>
+  </div>
+</section>
+
+

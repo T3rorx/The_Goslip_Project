@@ -44,8 +44,8 @@ ActiveRecord::Base.transaction do
   # 2) Users (belongs_to :city)
   # -------------------------
   #
-  User.create(first_name: "Enzo", last_name: "ulette", email: "enzoulette@gmail.com", description: "le boss de début nul à chier qui sert à apprendre les touches", age: 99, city: cities.sample) 
-  User.create(first_name: "Flow", last_name: "Tech", email: "flow@flowtech-LAB.org", description: "la science 1 fuse (fruits rouges)", age: 7, city: cities.sample) 
+  User.create(first_name: "Enzo", last_name: "ulette", email: "enzoulette@gmail.com", description: "le boss de début nul à chier qui sert à apprendre les touches", age: 99, city: cities.sample, password: "Admin") 
+  User.create(first_name: "Flow", last_name: "Tech", email: "flow@flowtech-LAB.org", description: "la science 1 fuse (fruits rouges)", age: 7, city: cities.sample, password: "Admin") 
   puts "→ Users"
   users = []
   users << User.find_or_create_by!(email: "admin@example.com") do |u|
@@ -54,6 +54,7 @@ ActiveRecord::Base.transaction do
     u.description = "Super admin"
     u.age         = 30
     u.city        = cities.sample
+    u.password = "Admin"
   end
 
 
@@ -65,7 +66,8 @@ ActiveRecord::Base.transaction do
       description: Faker::Quote.famous_last_words,
       email:       Faker::Internet.unique.email,
       age:         rand(16..70),
-      city:        cities.sample
+      city:        cities.sample,
+      password:    rand(10000..99999).to_s
     )
   end
 
