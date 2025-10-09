@@ -1,8 +1,20 @@
-<form action="<%= sessions_path %>" methode ="post">
+<form action="<%= sessions_path %>" method ="post">
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
-<input class="gp-input" type="string" id="user_email" placeholder="Email" >
+<input class="gp-input" 
+        type="email" 
+        id="email" 
+        name="email"
+        placeholder="Email">
 
-<input class="gp-input" type="string" id="user_password" placeholder="Mot de passe" value= "<%= user_password%>>
+
+<input  class="gp-input" 
+        type="password" 
+        id="password" 
+        name="password"
+        placeholder="Mot de passe">
+
+
 
 <button type="submit" class="gp-btn gp-btn--primary" > Log IN </button>
 

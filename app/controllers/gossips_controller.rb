@@ -9,6 +9,8 @@ class GossipsController < ApplicationController
 
   def create
     @gossip = Gossip.new(gossip_params)
+    @gossip.user = User.find_by(id: session[:user_id])
+    @gossip.tag_id = 1
 
     if @gossip.save
       redirect_to root_path, notice: "Le potin a été créé avec succès."
@@ -29,6 +31,6 @@ class GossipsController < ApplicationController
   private
 
   def gossip_params
-    params.require(:gossip).permit(:title, :content, :user_id)
+    params.require(:gossip).permit(:title, :content, :user_id,:tag )
   end
 end

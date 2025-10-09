@@ -34,9 +34,11 @@
           <button id="theme-toggle" class="gp-btn gp-btn--ghost" type="button" aria-pressed="false" aria-label="Basculer le thème">
             ☀️ Mode jour
           </button>
-          <%= link_to "Accueil", root_path, class: "gp-btn gp-btn--primary" %>
+          <%= link_to "Login", new_session_path, class: "gp-btn gp-btn--primary" %>
+          <%= link_to "Accueil", root_path, class: "gp-btn" %>
           <%= link_to "Team", pages_team_path, class: "gp-btn" %>
           <%= link_to "Contact", contact_path, class: "gp-btn gp-btn--ghost" %>
+          <%= link_to "Se déconnecter", session_path(session.id),data: { turbo: false }, method: :delete, class: "gp-btn" %>
         </div>
       </nav>
 
