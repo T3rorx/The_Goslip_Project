@@ -1,0 +1,11 @@
+<form action="<%= sessions_path %>" methode ="post">
+
+<input class="gp-input" type="string" id="user_email" placeholder="Email" >
+
+<input class="gp-input" type="string" id="user_password" placeholder="Mot de passe" value= "<%= user_password%>>
+
+<button type="submit" class="gp-btn gp-btn--primary" > Log IN </button>
+
+<%= link_to "Retour", root_path, class: "gp-btn gp-btn--ghost" %>
+
+</form>

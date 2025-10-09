@@ -17,6 +17,15 @@ class GossipsController < ApplicationController
     end
   end
 
+  def update
+    @model = Gossip.find(params[:id])
+      if @model.update(gossip_params)
+      redirect_to @model
+      else
+      render :edit
+      end
+  end
+
   private
 
   def gossip_params
