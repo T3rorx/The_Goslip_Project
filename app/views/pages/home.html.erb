@@ -1,7 +1,10 @@
 <section class="gp-card gp-fade-1">
   <div class="gp-card__header">
     <div>
-      <h2>Bienvenue <%= User.find_by(id: session[:user_id]).first_name %> !</h2>
+      <h2>Bienvenue <% if logged_in? %>
+      <%= @current_user.first_name %> !
+      <% else %>
+      <% end %></h2>
       <p class="gp-card-subtitle">Retrouve les scoops croustillants et notre équipe dédiée.</p>
     </div>
     <span class="gp-badge">🔥 Nouveaux ragots</span>

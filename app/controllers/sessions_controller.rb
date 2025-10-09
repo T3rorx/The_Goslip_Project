@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
   # on vérifie si l'utilisateur existe bien ET si on arrive à l'authentifier (méthode bcrypt) avec le mot de passe 
   if user && user.authenticate(params[:password])
-    session[:user_id] = user.id
+    log_in(user)
     redirect_to root_path, notice: "Login succès."
 
   else
@@ -20,8 +20,8 @@ end
 
 
   def destroy
-  session.delete(:user_id)
-  redirect_to root_path, notice: "Chiao"
+    log_out if logged_in?
+    redirect_to root_path, notice: "À bientôt !"
   end
 
 end
