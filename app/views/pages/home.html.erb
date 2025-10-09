@@ -1,7 +1,10 @@
 <section class="gp-card gp-fade-1">
   <div class="gp-card__header">
     <div>
-      <h1 class="gp-card-title">Bienvenue sur The Gossip Project</h1>
+      <h2>Bienvenue <% if logged_in? %>
+      <%= @current_user.first_name %> !
+      <% else %>
+      <% end %></h2>
       <p class="gp-card-subtitle">Retrouve les scoops croustillants et notre équipe dédiée.</p>
     </div>
     <span class="gp-badge">🔥 Nouveaux ragots</span>
@@ -27,7 +30,7 @@
           <div class="gp-meta">
             <% if gossip.user.present? %>
               <span class="gp-text-accent">
-                <%= link_to gossip.user.first_name, user_profile_path(gossip.user) %>
+                <%= link_to gossip.user.first_name, user_path(gossip.user) %>
               </span>
             <% else %>
               <span class="gp-text-muted">Anonyme</span>

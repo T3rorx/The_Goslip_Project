@@ -24,7 +24,11 @@
     </div>
     <div>
       <dt class="gp-text-muted gp-mb-1">Ville</dt>
-      <dd class="gp-mb-0"><%= @user.city&.name || "Non renseignée" %></dd>
+      <% if @user.city.present? %>
+        <dd class="gp-mb-0"><%= link_to @user.city.name, city_path(@user.city), class: "gp-text-accent" %></dd>
+      <% else %>
+        <dd class="gp-mb-0">Aucune ville renseignée</dd>
+      <% end %>
     </div>
     <div>
       <dt class="gp-text-muted gp-mb-1">Description</dt>

@@ -4,7 +4,7 @@
       <h1 class="gp-card-title gp-mb-0"><%= @gossip.title %></h1>
       <p class="gp-card-subtitle gp-mb-0">
         <% if @gossip.user.present? %>
-          Partagé par <%= link_to @gossip.user.first_name, user_profile_path(@gossip.user), class: "gp-text-accent" %>
+          Partagé par <%= link_to @gossip.user.first_name, user_path(@gossip.user), class: "gp-text-accent" %>
         <% else %>
           Partagé par <span class="gp-text-muted">Anonyme</span>
         <% end %>
@@ -17,6 +17,8 @@
     <p class="gp-text-muted">Ce qu’il nous apprend de croustillant :</p>
     <div><%= simple_format(@gossip.content) %></div>
   </div>
+
+<p> écrit un commentaire sous ce potin : <a href ="<%= comment_path@gossip.id %>" > viens ici  </p>
 
   <div class="gp-flex gp-gap-md gp-mt-3">
     <%= link_to "Revenir aux potins", root_path, class: "gp-btn gp-btn--ghost" %>

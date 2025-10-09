@@ -31,12 +31,15 @@
           <p class="gp-brand__name gp-mb-0">The Gossip Project</p>
         </div>
         <div class="gp-nav-links">
-          <button id="theme-toggle" class="gp-btn gp-btn--ghost" type="button" aria-pressed="false" aria-label="Basculer le thème">
-            ☀️ Mode jour
-          </button>
+          <%= if !logged_in?; link_to "Login", new_session_path, class: "gp-btn gp-btn--primary"; end %>
           <%= link_to "Accueil", root_path, class: "gp-btn gp-btn--primary" %>
           <%= link_to "Team", pages_team_path, class: "gp-btn" %>
           <%= link_to "Contact", contact_path, class: "gp-btn gp-btn--ghost" %>
+          <%= if logged_in?; link_to "Se déconnecter", session_path(session.id),data: { turbo_method: :delete }, method: :delete, class: "gp-btn"; end %>
+          <button id="theme-toggle" class="gp-btn gp-btn--ghost" type="button" aria-pressed="false" aria-label="Basculer le thème">
+            ☀️
+          </button>
+
         </div>
       </nav>
 
@@ -73,7 +76,7 @@
           root.dataset.theme = mode;
           const isDark = mode === "dark";
           toggle.setAttribute("aria-pressed", String(isDark));
-          toggle.textContent = isDark ? "🌙 Mode nuit" : "☀️ Mode jour";
+          toggle.textContent = isDark ? "☀️" : "🌙";
           toggle.classList.remove("gp-btn--primary", "gp-btn--ghost");
           toggle.classList.add(isDark ? "gp-btn--ghost" : "gp-btn--primary");
         }
