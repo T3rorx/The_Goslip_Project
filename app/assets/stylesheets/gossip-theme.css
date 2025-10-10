@@ -1,6 +1,6 @@
 /* =========================================================
-   FlowTech LAB ✕ Gossip Project
-   Palette: Chocolat / Feu / Doré inspirée du thème historique
+  Gossip Project
+  Palette: Chocolat / Feu / Doré inspirée du thème historique
    ========================================================= */
 
 :root {
@@ -421,7 +421,6 @@ body[data-theme="light"] .gp-contact-panel {
   height: 320px;
   transform: translate(-50%, -50%);
   background: radial-gradient(circle at center, rgba(255, 200, 44, 0.22) 0%, rgba(255, 200, 44, 0) 70%);
-  box-shadow: 0 0 60px rgba(255, 200, 44, 0.25), 0 0 120px rgba(255, 122, 0, 0.22);
   pointer-events: none;
   z-index: -1;
 }
